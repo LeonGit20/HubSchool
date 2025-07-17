@@ -9,7 +9,7 @@ window.productsData = [
         image: "Products Cover/Img28.jpg",
         category: "Informatica",
         date: "2025-07-15",
-        externalLink: "https://leongit20.github.io/HubSchool/HelloWord.html" // Esempio di link esterno
+        externalLink: "https://leongit20.github.io/HubSchool/HelloWord" // Esempio di link esterno
     },
     {
         id: 2,
