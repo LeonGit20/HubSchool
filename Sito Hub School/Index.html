@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HubSchool</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- AGGIORNATO: Link per la favicon che punta al file WebSite-Icon.png nella cartella 'Products Cover' -->
+    <link rel="icon" type="image/png" href="Products Cover/WebSite-Icon.ico">
+    <!-- Script inline per caricare il tema immediatamente e prevenire il FOUC (Flash of Unstyled Content) -->
+    <script>
+        /**
+         * Ottiene il valore di un cookie dato il suo nome.
+         * Questa funzione è inclusa direttamente nell'HTML per garantire che il tema sia caricato
+         * prima che il browser renda completamente la pagina, prevenendo il "flash" del tema predefinito.
+         * @param {string} name Il nome del cookie da cercare.
+         * @returns {string} Il valore del cookie, o una stringa vuota se non trovato.
+         */
+        function getCookieImmediate(name) {
+            const cname = name + "=";
+            const decodedCookie = decodeURIComponent(document.cookie);
+            const ca = decodedCookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) === ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(cname) === 0) {
+                    return c.substring(cname.length, c.length);
+                }
+            }
+            return "";
+        }
+
+        // Carica il tema dal cookie non appena possibile.
+        // Applica la classe 'dark-theme' all'elemento <html> se il cookie indica il tema scuro.
+        // L'applicazione a <html> è una pratica migliore per la gestione dei temi globali.
+        const themePreference = getCookieImmediate("theme");
+        if (themePreference === "dark") {
+            document.documentElement.classList.add('dark-theme');
+        }
+
+        // Rimosso il controllo e l'aggiunta della classe 'cookie-accepted' qui.
+        // Il body è visibile di default, la gestione del modale avviene in javas.js.
+    </script>
+</head>
+<body>
+    <!-- Cookie Consent Modal -->
+    <div id="cookie-consent-overlay" class="cookie-consent-overlay">
+        <div class="cookie-consent-modal">
+            <h2>Gestione Cookie</h2>
+            <p>Utilizziamo i biscotti per migliorare la tua esperienza di navigazione. Contrariamente alla credenza comune, se usati correttamente i biscotti non sono pericolosi: offrono
+            infatti la possibilità di memorizzare informazioni e azioni che compi frequentemente su centinaia di siti, permettendoti di risparmiare tempo e ridurre lo stress.
+            Su questo sito garantiamo la massima trasparenza. clicca su
+            <span
+                class="clickable-word"
+                id="cookieWord"
+                role="button"
+                tabindex="0"
+                aria-expanded="false"
+                aria-controls="cookieContent"
+            >
+                "biscotti"
+            </span>
+            per scoprire quali dati vengono salvati e perchè.
+            <span class="hidden-content" id="cookieContent">
+                Cambio tema.
+            </span>
+            Cliccando su “Accetta”, acconsenti all’uso di tutti i biscotti. Se preferisci, seleziona “Rifiuta”: in questo modo il browser non salverà dati o preferenze da te forniti.</p>
+            <div class="cookie-consent-buttons">
+                <button id="accept-cookies">Accetta</button>
+                <button id="reject-cookies">Rifiuta</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header Section -->
+    <header>
+        <div class="header-container">
+            <div class="left-section">
+                <a href="#" class="logo">
+                    <span class="logo-icon">📖</span>
+                    Hub school
+                </a>
+                <nav>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Chi sono</a></li>
+                        <li><a href="#">Contatti</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="right-section">
+                <div class="search-container">
+                    <input type="text" class="search-input" id="search-input" placeholder="Cerca prodotti...">
+                    <span class="search-icon">🔍</span>
+                </div>
+                <button class="theme-toggle" id="theme-toggle">🌙</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Categories Section -->
+    <div class="categories-container" id="categories">
+        <button class="category-btn" data-category="Informatica">Informatica</button>
+        <button class="category-btn" data-category="Matematica">Matematica</button>
+        <button class="category-btn" data-category="storia">storia</button>
+        <button class="category-btn" data-category="Italiano">Italiano</button>
+        <button class="category-btn" data-category="chimica">chimica</button>
+        <button class="category-btn" data-category="inglese">inglese</button>
+        <!-- NUOVA CATEGORIA: Preferiti -->
+        <button class="category-btn" data-category="preferiti">Preferiti</button>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <div class="products-container" id="products-container">
+            <!-- Products will be loaded here dynamically -->
+        </div>
+
+        <div class="pagination-container">
+            <button class="pagination-btn" id="prev-btn" disabled>
+                ← Precedente
+            </button>
+            <span class="page-indicator" id="page-indicator">Pagina 1 di 1</span>
+            <button class="pagination-btn" id="next-btn">
+                Successivo →
+            </button>
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3 class="footer-title">HubSchool</h3>
+                <p>Il sito che mette a disposizione materiale per l'apprendimentro didattico, a scopo ludico e informativo.</p>
+            </div>
+            <div class="footer-column">
+                <h3 class="footer-title">Collegamenti</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Chi sono</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3 class="footer-title">Risorse</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Politica sulle privacy</a></li>
+                    <li><a href="#">Termini e condizioni</a></li>
+                    <li><a href="#">Contattami</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3 class="footer-title">Seguimi</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 HubSchool. Tutti i diritti riservati, o forse no.</p>
+        </div>
+    </footer>
+    <script src="products-data.js"></script>
+    <script src="javas.js"></script>
+</body>
+</html>

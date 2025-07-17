@@ -1,0 +1,764 @@
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2c3e50;
+    --accent-color: #e74c3c;
+    --bg-color: #f5f5f5;
+    --text-color: #333;
+    --card-bg: #fff;
+    --header-bg: #fff;
+    --footer-bg: #2c3e50;
+    --footer-text: #ecf0f1;
+    --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.dark-theme {
+    --primary-color: #3498db;
+    --secondary-color: #2c3e50;
+    --accent-color: #e74c3c;
+    --bg-color: #1a1a1a;
+    --text-color: #f5f5f5;
+    --card-bg: #2c2c2c;
+    --header-bg: #232323;
+    --footer-bg: #0f0f0f;
+    --footer-text: #ecf0f1;
+    --shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: all 0.3s ease;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    /* Il body è ora visibile e scrollabile per impostazione predefinita */
+    visibility: visible; /* Assicura che il body sia sempre visibile */
+    overflow: auto; /* Permette lo scrolling di default */
+}
+
+/* La classe .no-scroll non avrà più effetto sullo scrolling del body */
+/* body.no-scroll {
+    overflow: hidden;
+} */
+
+/* Header Styles */
+header {
+    background-color: var(--header-bg);
+    box-shadow: var(--shadow);
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.left-section {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo-icon {
+    font-size: 1.8rem;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    position: relative;
+    padding: 0.5rem 0;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* Aggiunto per i link di navigazione */
+nav a:focus {
+    outline: none;
+    /* Rimosso box-shadow per evitare persistenza su mobile */
+    /* box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.3); */
+}
+/* Assicurati che l'underline scompaia quando il focus non è in hover */
+nav a:focus::after {
+    width: 0;
+}
+
+
+.right-section {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.search-container {
+    position: relative;
+}
+
+.search-input {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    border: 1px solid #ddd;
+    width: 200px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.search-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--secondary-color);
+    cursor: default;
+}
+
+.theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-color);
+    font-size: 1.2rem;
+    padding: 0.3rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Aggiunto per il tema toggle */
+    outline: none;
+}
+
+/* Categories Styles */
+.categories-container {
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    background-color: var(--bg-color);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.category-btn {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--primary-color);
+    border-radius: 20px;
+    background-color: transparent;
+    color: var(--text-color);
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.category-btn:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.category-btn.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Regole per gestire il focus sui dispositivi mobili per i bottoni di categoria */
+.category-btn:focus {
+    outline: none; /* Rimuove il bordo di focus predefinito del browser */
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.3); /* Esempio: un sottile anello blu */
+}
+
+/* Assicurati che lo stato di focus di un bottone NON attivo sia come il suo stato normale */
+.category-btn:focus:not(.active) {
+    background-color: transparent;
+    color: var(--text-color);
+    border-color: var(--primary-color);
+    box-shadow: none; /* Rimuove il box-shadow quando non è attivo ma in focus */
+}
+
+
+/* Main Content Styles */
+main {
+    flex: 1;
+    padding: 2rem 1rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* Grid Layout per i Prodotti */
+.products-container {
+    display: grid;
+    grid-gap: 1.5rem;
+    grid-template-columns: 1fr; /* Default: 1 colonna per schermi <= 350px */
+}
+
+/* Breakpoints per colonne prestabilite in base alle richieste dell'utente */
+@media screen and (min-width: 351px) { /* Da 351px in su, 2 colonne (fino a 540px) */
+    .products-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (min-width: 541px) { /* Da 541px in su, 3 colonne (fino a 700px) */
+    .products-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (min-width: 701px) { /* Da 701px in su, 4 colonne (fino a 800px) */
+    .products-container {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Per risoluzioni superiori a 800px, manteniamo 4 colonne */
+@media screen and (min-width: 801px) {
+    .products-container {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Eccezione per risoluzioni 2K e superiori (2560px) */
+@media screen and (min-width: 2560px) {
+    .products-container {
+        grid-template-columns: repeat(5, 1fr); /* 5 colonne per 2K e superiori */
+    }
+}
+
+
+.product-card {
+    /* Le card si adatteranno alla larghezza del grid cell */
+    /* Manteniamo l'aspect ratio per una visualizzazione coerente */
+    aspect-ratio: 3/4;
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    position: relative; /* Assicurati che sia relative per posizionare gli elementi figli */
+    outline: none; /* Rimuove il bordo di focus predefinito */
+}
+
+/* MODIFICATO: Spostato :hover in una media query per limitarlo ai dispositivi con mouse */
+@media (hover: hover) and (pointer: fine) {
+    .product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+}
+
+/* AGGIUNTO: Regola per il focus delle product card - assicura che torni allo stato normale */
+.product-card:focus {
+    transform: translateY(0); /* Assicura che non ci sia sollevamento */
+    box-shadow: var(--shadow); /* Assicura l'ombra predefinita */
+}
+
+
+.product-image {
+    width: 100%;
+    height: 100%; /* L'immagine occupa il 100% dell'altezza della card */
+    object-fit: cover;
+}
+
+.product-title {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--text-color);
+    position: absolute; /* Posizionamento assoluto */
+    bottom: 0; /* Allineato al bordo inferiore */
+    left: 0; /* Allineato al bordo sinistro */
+    width: 100%; /* Occupa tutta la larghezza */
+    text-align: center; /* Allinea il testo al centro */
+    z-index: 5; /* Assicura che sia sopra l'immagine */
+    background-color: rgba(255, 255, 255, 0.8); /* Sfondo semitrasparente per tema chiaro */
+    padding: 0.5rem; /* Padding per leggibilità */
+    box-sizing: border-box; /* Include padding nella larghezza */
+
+    /* Nuove proprietà per la troncatura del testo */
+    white-space: nowrap; /* Impedisce al testo di andare a capo */
+    overflow: hidden; /* Nasconde il testo che supera il contenitore */
+    text-overflow: ellipsis; /* Aggiunge i puntini di sospensione */
+}
+
+.dark-theme .product-title {
+    background-color: rgba(0, 0, 0, 0.8); /* Sfondo semitrasparente per tema scuro */
+    color: var(--footer-text); /* Testo chiaro per tema scuro */
+}
+
+.product-date {
+    font-size: 0.8rem;
+    color: var(--secondary-color);
+    opacity: 0.9; /* Aumenta l'opacità per maggiore visibilità */
+    position: absolute;
+    top: 10px; /* Spostato in alto */
+    right: 10px; /* Mantenuto a destra */
+    z-index: 5; /* Assicura che sia sopra l'immagine */
+    background-color: rgba(255, 255, 255, 0.7); /* Sfondo semitrasparente per tema chiaro */
+    padding: 0.2rem 0.5rem;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1); /* Leggera ombra per staccare */
+}
+
+.dark-theme .product-date {
+    background-color: rgba(0, 0, 0, 0.7); /* Sfondo semitrasparente per tema scuro */
+    color: var(--footer-text); /* Testo chiaro per tema scuro */
+    box-shadow: 0 1px 3px rgba(255,255,255,0.1); /* Leggera ombra chiara */
+}
+
+.new-badge {
+    position: absolute;
+    top: 40px;
+    right: 10px;
+    background-color: var(--accent-color);
+    color: white;
+    padding: 0.2rem 0.5rem;
+    border-radius: 5px;
+    font-size: 0.7rem;
+    font-weight: bold;
+}
+
+/* Pagination Styles */
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+    align-items: center;
+}
+
+.pagination-btn {
+    padding: 0.5rem 1rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    /* Aggiunto per i bottoni di paginazione */
+    outline: none;
+}
+
+.pagination-btn:focus {
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.3);
+}
+
+.pagination-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.page-indicator {
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+/* Stile per l'input della paginazione */
+#page-number-input {
+    width: 40px;
+    text-align: center;
+    border: 1px solid var(--primary-color);
+    border-radius: 4px;
+    padding: 2px 4px;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    font-size: 0.9rem;
+    margin: 0 5px;
+    /* Aggiunto per l'input di paginazione */
+    outline: none;
+}
+
+#page-number-input:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.2);
+}
+
+/* Stile per quando l'input è sotto tema scuro */
+.dark-theme #page-number-input {
+    border-color: var(--primary-color);
+}
+
+/* Footer Styles */
+footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    padding: 2rem 1rem;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1400px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.footer-column {
+    flex: 1;
+    min-width: 200px;
+}
+
+.footer-title {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.footer-title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 30px;
+    height: 2px;
+    background-color: var(--primary-color);
+}
+
+.footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.footer-links a {
+    color: var(--footer-text);
+    text-decoration: none;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+    /* Aggiunto per i link del footer */
+    outline: none;
+}
+
+.footer-links a:hover {
+    opacity: 1;
+}
+
+/* MODIFICATO: Rimosso box-shadow da :focus per i link del footer */
+.footer-links a:focus {
+    /* box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.3); */
+    /* Assicurati che l'opacità torni al valore normale se non in hover */
+    opacity: 0.8; /* Torna all'opacità normale quando in focus ma non in hover */
+}
+
+
+.copyright {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Animations */
+.highlight {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(231, 76, 60, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0); }
+}
+
+/* Responsive Design per Header e Navigation */
+@media (max-width: 992px) {
+    .header-container {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .left-section, .right-section {
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+
+@media (max-width: 768px) {
+    nav ul {
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .search-input {
+        width: 150px;
+    }
+
+    nav {
+        display: none;
+    }
+}
+
+/* Cookie Consent Modal Styles */
+.cookie-consent-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.300); /* Opacità ridotta per maggiore visibilità del background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Assicura che sia sopra tutto il resto */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1.5s ease, visibility 1.5s ease;
+}
+
+.cookie-consent-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.cookie-consent-modal {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+    transform: translateY(-50px); /* Inizia leggermente più in alto */
+    opacity: 0;
+    transition: transform 1.5s ease-out, opacity 1.5s ease-out;
+}
+
+.cookie-consent-overlay.show .cookie-consent-modal {
+    transform: translateY(0); /* Si sposta nella posizione finale */
+    opacity: 1;
+}
+
+.cookie-consent-modal h2 {
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.cookie-consent-modal p {
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+
+.cookie-consent-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.cookie-consent-buttons button {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    /* Aggiunto per i bottoni del consenso cookie */
+    outline: none;
+}
+
+.cookie-consent-buttons button:focus {
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.3);
+}
+
+#accept-cookies {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+#accept-cookies:hover {
+    background-color: #2980b9;
+}
+
+#reject-cookies {
+    background-color: #e74c3c; /* Un colore per il rifiuto */
+    color: white;
+}
+
+#reject-cookies:hover {
+    background-color: #c0392b;
+}
+
+/* Nuovi stili per la parola cliccabile (lo span con classe .clickable-word) */
+.clickable-word {
+    cursor: pointer;
+    font-weight: inherit;
+    color: #2563eb; /* Colore blu per evidenziare la parola chiave */
+    text-decoration: none; /* Sottolineatura per evidenziare la parola chiave */
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+    outline: none; /* Aggiunto per la parola cliccabile */
+    white-space: nowrap; /* Impedisce interruzioni di riga all'interno della parola */
+}
+
+/* Stili per il contenuto nascosto */
+.hidden-content {
+    display: none; /* Inizialmente nascosto */
+    background-color: #e0f2fe; /* Light blue background */
+    border: 1px solid #93c5fd; /* Light blue border */
+    padding: 12px 16px;
+    margin-top: 8px;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    font-size: 0.95em;
+    line-height: 1.5;
+    color: #1f2937;
+}
+
+/* Rimuovi i vecchi stili details/summary se non più usati altrove */
+/* Se non hai altri elementi <details> nel sito, puoi rimuovere queste regole */
+details summary {
+    list-style: none;
+    cursor: pointer;
+    display: inline;
+    font-weight: normal;
+    color: inherit;
+    text-decoration: underline;
+    margin: 0;
+    padding: 0;
+}
+
+details summary::-webkit-details-marker {
+    display: none;
+}
+
+details[open] summary {
+    list-style: none;
+}
+
+details {
+    display: inline;
+    margin-right: 0.3em;
+}
+
+/* Stili per il pulsante Preferiti sulla card del prodotto */
+.favorite-btn {
+    position: absolute;
+    top: 10px; /* Spostato leggermente più in basso per non essere troppo vicino al bordo */
+    left: 10px; /* Spostato leggermente più a destra */
+    background-color: rgba(255, 255, 255, 0.8); /* Sfondo semi-trasparente */
+    border: 1px solid #ccc;
+    border-radius: 50%; /* Rende il pulsante circolare */
+    width: 36px; /* Larghezza del pulsante */
+    height: 36px; /* Altezza del pulsante */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 10; /* Assicura che sia sopra l'immagine */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Ombra leggera */
+    transition: background-color 0.3s ease, transform 0.2s ease, border-color 0.3s ease;
+    /* Aggiunto per il bottone preferiti */
+    outline: none;
+}
+
+.favorite-btn:hover {
+    transform: scale(1.1); /* Leggero ingrandimento al passaggio del mouse */
+    background-color: rgba(255, 255, 255, 1);
+}
+
+.favorite-btn svg {
+    fill: #ccc; /* Colore grigio chiaro per il cuore non preferito */
+    color: #ccc; /* Colore del bordo del cuore */
+    width: 20px;
+    height: 20px;
+    transition: fill 0.3s ease, color 0.3s ease;
+}
+
+.favorite-btn.is-favorite {
+    background-color: rgba(255, 0, 0, 0.8); /* Sfondo rosso semi-trasparente quando preferito */
+    border-color: #ff0000;
+}
+
+.favorite-btn.is-favorite svg {
+    fill: #ff0000; /* Cuore rosso quando preferito */
+    color: #ff0000;
+}
+
+/* Regole per gestire il focus sui dispositivi mobili per il bottone preferiti */
+.favorite-btn:focus {
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.3);
+}
+
+/* Assicurati che lo stato di focus di un bottone NON preferito sia come il suo stato normale */
+.favorite-btn:focus:not(.is-favorite) {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-color: #ccc;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+
+/* Dark theme adjustments for favorite button */
+.dark-theme .favorite-btn {
+    background-color: rgba(0, 0, 0, 0.6);
+    border-color: #555;
+}
+
+.dark-theme .favorite-btn svg {
+    fill: #888;
+    color: #888;
+}
+
+.dark-theme .favorite-btn.is-favorite {
+    background-color: rgba(255, 0, 0, 0.6);
+    border-color: #ff0000;
+}
+
+.dark-theme .favorite-btn.is-favorite svg {
+    fill: #ff0000;
+    color: #ff0000;
+}
+
+/* Dark theme adjustments for favorite button focus */
+.dark-theme .favorite-btn:focus:not(.is-favorite) {
+    background-color: rgba(0, 0, 0, 0.6);
+    border-color: #555;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
