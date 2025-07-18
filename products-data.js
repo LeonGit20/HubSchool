@@ -17,7 +17,7 @@ window.productsData = [
         image: "Img/Img29.jpg",
         category: "elettronica",
         date: "2025-07-10",
-        externalLink: "https://leongit20.github.io/HubSchool/Progetti%20Web/Albun-Fotografico/Index"
+        externalLink: "Progetti Web/Siti-Info-Film-Game/Main-Info/Index"
     },
     {
         id: 3,
