@@ -17,7 +17,7 @@ window.productsData = [
         image: "Img/Img29.jpg",
         category: "elettronica",
         date: "2025-07-10",
-        externalLink: "Progetti Web/Albun Fotografico/index"
+        externalLink: "Progetti Web/Albun-Fotografico/index"
     },
     {
         id: 3,
