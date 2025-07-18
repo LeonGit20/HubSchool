@@ -1,0 +1,31 @@
+#myHeader {
+	border: 2px solid #00413f;
+	background-color: #d2cdd6;
+	color: black;
+	padding: 20px;
+	text-align: center;
+}
+
+.p {
+	border: 2px solid #002a51;
+	background-color: #858287;
+	color: #ffffff;
+	padding: 30px;
+	text-align: center;
+}
+
+h3,h4.intro {
+	border: 5px solid #ec0000;
+	background-color: #313032;
+	color: #e6dbdb;
+	padding: 35px;
+	text-align: center;
+}
+div > h5,p {
+	
+	border: 5px solid #aaff00;
+	background-color: #313032;
+	color: #e6dbdb;
+	padding: 40px;
+	text-align: center;
+}

@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='utf-8'?>
+<project name="C:\Users\franc\OneDrive\Documents\Scuola\Informatica Di Natale\Album Fotografico\Album Fotografico.clpprj">
+ <settings>
+  <PM_URL><![CDATA[http://localhost/]]></PM_URL>
+  <PM_HOME_URL><![CDATA[http://localhost/]]></PM_HOME_URL>
+  <PM_LIBS><![CDATA[]]></PM_LIBS>
+  <PM_FTP_CONNECTION><![CDATA[]]></PM_FTP_CONNECTION>
+  <PM_FTP_DIR><![CDATA[]]></PM_FTP_DIR>
+  <PM_FTP_UPLOAD_ON_SAVE><![CDATA[INT:0]]></PM_FTP_UPLOAD_ON_SAVE>
+ </settings>
+ <removed value=";C:\Users\franc\OneDrive\Documents\Scuola\Informatica\Informatica Di Natale\Album Fotografico\css;C:\Users\franc\OneDrive\Documents\Scuola\Informatica\Informatica Di Natale\Album Fotografico\css\style css.css;C:\Users\franc\OneDrive\Documents\Scuola\Informatica\Informatica Di Natale\Album Fotografico\style.css;"/>
+ <added value=""/>
+ <lastopfiles>
+  <file name="C:\Users\franc\OneDrive\Documents\Scuola\Informatica Di Natale\Album Fotografico\Sito.html"/>
+  <lastactivefile name="C:\Users\franc\OneDrive\Documents\Scuola\Informatica Di Natale\Album Fotografico\Sito.html"/>
+ </lastopfiles>
+ <errors version="1.10"/>
+ <cakedata/>
+ <dplmenupath/>
+ <laravael/>
+ <smartyassings/>
+ <twigtemplate/>
+ <yiidata/>
+ <todoblock/>
+ <dbgurls/>
+ <filescache>
+  <file name="C:\Users\franc\OneDrive\Documents\Scuola\Informatica Di Natale\Album Fotografico\Style.css" crc="1612785937000"/>
+  <file name="C:\Users\franc\OneDrive\Documents\Scuola\Informatica Di Natale\Album Fotografico\Sito.html" crc="1616857064907"/>
+ </filescache>
+</project>

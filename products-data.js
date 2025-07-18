@@ -6,18 +6,18 @@ window.productsData = [
     {
         id: 1,
         title: "Smartphone XYZ",
-        image: "Products Cover/Img28.jpg",
+        image: "Img/Img28.jpg",
         category: "Informatica",
         date: "2025-07-15",
-        externalLink: "https://leongit20.github.io/HubSchool/Siti-Info-Film-Game/Main-Info/index" // Esempio di link esterno
+        externalLink: "Progetti Web/Siti-Info-Film-Game/Main-Info/Index" // Esempio di link esterno
     },
     {
         id: 2,
         title: "Laptop Pro",
-        image: "/api/placeholder/400/300?text=Laptop+Pro",
+        image: "Img/Img29.jpg",
         category: "elettronica",
         date: "2025-07-10",
-        externalLink: "https://www.google.com/"
+        externalLink: "Progetti Web/Albun Fotografico/index"
     },
     {
         id: 3,
